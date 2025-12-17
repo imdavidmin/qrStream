@@ -1,0 +1,344 @@
+:root {
+  --color-bg: #f5f5f5;
+  --color-bg-elevated: #fff;
+  --color-bg-muted: #f0f0f0;
+  --color-bg-inverse: #333;
+  --color-text: #333;
+  --color-text-muted: #666;
+  --color-text-inverse: #fff;
+  --color-border: #ddd;
+  --color-border-focus: #333;
+  --color-accent: #333;
+  --color-accent-hover: #eee;
+  --color-error: #c00;
+  --color-camera-bg: #000;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  --color-bg: #1a1a1a;
+  --color-bg-elevated: #2a2a2a;
+  --color-bg-muted: #333;
+  --color-bg-inverse: #fff;
+  --color-text: #e5e5e5;
+  --color-text-muted: #999;
+  --color-text-inverse: #1a1a1a;
+  --color-border: #444;
+  --color-border-focus: #888;
+  --color-accent: #fff;
+  --color-accent-hover: #333;
+  --color-error: #f66;
+  --color-camera-bg: #000;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+main {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1rem;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tabs button:hover {
+  color: var(--color-text);
+}
+
+.tabs button.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
+}
+
+.tab-content {
+  background: var(--color-bg-elevated);
+  border-radius: 4px;
+  padding: 1rem;
+  box-shadow: var(--shadow-card);
+}
+
+/* Collapsible */
+details.options {
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+details.options summary {
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  user-select: none;
+}
+
+details.options summary:hover {
+  color: var(--color-text);
+}
+
+details.options[open] summary {
+  border-bottom: 1px solid var(--color-border);
+}
+
+details.options .options-content {
+  padding: 0.75rem;
+}
+
+/* Form elements */
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-group label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.input-group label.full-width {
+  width: 100%;
+}
+
+select,
+input[type="number"],
+textarea {
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+}
+
+select:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* QR Display */
+.qr-display {
+  text-align: center;
+}
+
+.qr-container {
+  display: inline-block;
+  padding: 0.5rem;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.qr-container img {
+  display: block;
+}
+
+.frame-info {
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
+.frame-label {
+  font-weight: 500;
+}
+
+.frame-counter {
+  color: var(--color-text-muted);
+}
+
+.playback-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.playback-controls button {
+  width: 2.5rem;
+  padding: 0.5rem;
+}
+
+.playback-controls .play-btn {
+  width: 3rem;
+}
+
+/* Camera / Reader */
+.camera-container {
+  position: relative;
+  background: var(--color-camera-bg);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.camera-container video {
+  display: block;
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+.camera-container canvas.hidden {
+  display: none;
+}
+
+.status {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: var(--color-bg-muted);
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+.status .error {
+  color: var(--color-error);
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--color-accent);
+  transition: width 0.2s;
+}
+
+.progress span {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  min-width: 60px;
+  text-align: right;
+}
+
+.result {
+  margin-top: 1rem;
+}
+
+.result h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.result pre {
+  background: var(--color-bg-muted);
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.theme-toggle:hover:not(:disabled) {
+  background: var(--color-border);
+}
