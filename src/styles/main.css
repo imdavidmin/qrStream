@@ -242,6 +242,29 @@ button:disabled {
   width: 3rem;
 }
 
+.size-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.size-controls button {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.size-controls span {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  min-width: 50px;
+  text-align: center;
+}
+
 /* Camera / Reader */
 .camera-container {
   position: relative;
@@ -306,10 +329,33 @@ button:disabled {
   margin-top: 1rem;
 }
 
-.result h3 {
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.result-header h3 {
   font-size: 0.875rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin: 0;
+}
+
+.result-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-status {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.copy-btn {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
 }
 
 .result pre {
@@ -320,6 +366,27 @@ button:disabled {
   overflow-x: auto;
   white-space: pre-wrap;
   word-break: break-all;
+}
+
+.result pre.collapsed {
+  max-height: 20vh;
+  overflow-y: hidden;
+}
+
+.expand-btn {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  background: var(--color-bg-muted);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  padding: 0.25rem;
+}
+
+.expand-btn:hover:not(:disabled) {
+  background: var(--color-border);
+  color: var(--color-text);
 }
 
 /* Theme toggle */

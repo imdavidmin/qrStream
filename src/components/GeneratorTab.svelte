@@ -14,6 +14,7 @@
   let isPlaying = false;
   let qrDataUrl = '';
   let intervalId: number | null = null;
+  let qrSize = 300;
 
   async function generateQRFrames() {
     if (!data.trim()) return;
@@ -25,10 +26,17 @@
   async function renderCurrentFrame() {
     if (frames.length === 0) return;
     qrDataUrl = await QRCode.toDataURL(frames[currentFrameIndex], {
-      width: 300,
+      width: qrSize,
       margin: 2,
       errorCorrectionLevel: 'M',
     });
+  }
+
+  function adjustSize(delta: number) {
+    qrSize = Math.max(150, Math.min(600, qrSize + delta));
+    if (frames.length > 0) {
+      renderCurrentFrame();
+    }
   }
 
   function startPlayback() {
@@ -153,6 +161,12 @@
         <button on:click={() => goToFrame(frames.length - 1)} disabled={currentFrameIndex === frames.length - 1}>
           ⏭
         </button>
+      </div>
+
+      <div class="size-controls">
+        <button on:click={() => adjustSize(-50)} disabled={qrSize <= 150}>−</button>
+        <span>{qrSize}px</span>
+        <button on:click={() => adjustSize(50)} disabled={qrSize >= 600}>+</button>
       </div>
     </div>
   {/if}

@@ -26,6 +26,18 @@
   let lastScannedData = '';
   let resultData = '';
   let statusMessage = 'Click "Start Scanning" to begin';
+  let resultExpanded = false;
+  let copyStatus = '';
+
+  async function copyToClipboard() {
+    try {
+      await navigator.clipboard.writeText(resultData);
+      copyStatus = 'Copied!';
+      setTimeout(() => { copyStatus = ''; }, 2000);
+    } catch {
+      copyStatus = 'Failed to copy';
+    }
+  }
 
   function resetState() {
     state = {
@@ -232,8 +244,17 @@
 
   {#if state.completed}
     <div class="result">
-      <h3>Received Data ({state.dataType}):</h3>
-      <pre>{resultData}</pre>
+      <div class="result-header">
+        <h3>Received Data ({state.dataType}):</h3>
+        <div class="result-actions">
+          {#if copyStatus}<span class="copy-status">{copyStatus}</span>{/if}
+          <button class="copy-btn" on:click={copyToClipboard}>Copy</button>
+        </div>
+      </div>
+      <pre class:collapsed={!resultExpanded}>{resultData}</pre>
+      <button class="expand-btn" on:click={() => resultExpanded = !resultExpanded}>
+        {resultExpanded ? '▲ Collapse' : '▼ Expand'}
+      </button>
     </div>
   {/if}
 </section>
